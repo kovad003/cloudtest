@@ -29,7 +29,7 @@ public class ConnService {
 	@Context
 	HttpServletResponse response;
 	
-	
+//	Will print out connection properties from appengine-web.xml
 	@POST
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/printconnection")
@@ -55,10 +55,8 @@ public class ConnService {
 			e.printStackTrace();
 		}
 	}
-	
 
-	
-	
+//	Will print out all system properties including connection properties from appengine-web.xml
 	@POST
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/printproperties")
