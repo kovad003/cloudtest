@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+
+  <threadsafe>true</threadsafe>
+  <sessions-enabled>true</sessions-enabled>
+  <runtime>java8</runtime>
+
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    <property name="drivername" value="com.mysql.cj.jdbc.Driver"/> <!-- original by Pena: com.mysql.jdbc.Driver -->
+    <property name="googleusername" value="root"/>
+    <property name="googlepassword" value=""/> <!-- No pwd for root on gc -->
+    <property name="localusername" value="nobody"/>
+    <property name="localpassword" value="kukucs"/>
+    <property name="databasename" value="fishpooldb"/>
+    <property name="socketfactory" value="com.google.cloud.sql.mysql.SocketFactory"/>
+    <property name="servertimezone" value="serverTimezone=Europe/Helsinki"/> <!-- Will prevent Hikari errors for CET timezone -->
+    
+<!-- the next value is from Google Cloud MySQL inctance -->    
+    <property name="cloudsqlinstance" value="cloudtest-325317:europe-west1:cloudtestmysqlrest"/>
+    <property name="usessl" value="false"/>
+    
+  </system-properties>
+
+</appengine-web-app>
