@@ -36,6 +36,41 @@ public class FishService {
 	HttpServletResponse response;
 	
 	@POST
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("/readfish")
+	public void readFish() {
+		ArrayList<Fish> list=new ArrayList<>();
+		Connection conn=Connections.getConnection();
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			ResultSet RS=stmt.executeQuery("select * from fish");
+			while (RS.next()) {
+				Fish fish=new Fish();
+				fish.setId(RS.getInt("id"));
+				fish.setBreed(RS.getString("breed"));
+				fish.setWeight(RS.getString("weight"));
+				fish.setLength(RS.getString("length"));
+				fish.setPrice(RS.getString("price"));
+				list.add(fish);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("fish is:" + list);
+		request.setAttribute("fishlist", list);
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showfish.jsp");
+		try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	@POST
 	@Consumes("application/x-www-form-urlencoded") //Method can receive POSTed data from a html form
 	@Path("/addfish")
 	public void addFish(@FormParam("breed") String breed, @FormParam("weight") String weight, @FormParam("length") String length,@FormParam("price") String price) {
@@ -78,7 +113,7 @@ public class FishService {
 		}
 		System.out.println("fish is:" + list);
 		request.setAttribute("fishlist", list);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/printfish.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/addfish.jsp");
 		try {
 			rd.forward(request, response);
 		} catch (ServletException | IOException e) {
