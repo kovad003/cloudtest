@@ -39,14 +39,3 @@
 </html>
 
 
-<!--
-
-<ol>
-<c:forEach var="fish" items="${requestScope.fishlist }">
-	<li>${fish} <a href='../deletefish?id=${fish.id}'>Delete</a> <a href='../readtoupdatefish?id=${fish.id}'>Update</a>
-</c:forEach>
-</ol>
-</body>
-</html>
-
--->

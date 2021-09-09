@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -66,6 +68,14 @@ public class FishService {
 		} catch (ServletException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		Properties p = System.getProperties();
+		Enumeration keys = p.keys();
+		while (keys.hasMoreElements()) {
+		    String key = (String)keys.nextElement();
+		    String value = (String)p.get(key);
+		    System.out.println(key + ": " + value);
 		}
 
 	}

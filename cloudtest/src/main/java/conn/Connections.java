@@ -40,7 +40,6 @@ public class Connections {
 		// The configuration object specifies behaviors for the connection pool.
 		HikariConfig config = new HikariConfig();
 		 // Configure which instance and what database user to connect with.
-			
 		config.setJdbcUrl(String.format("jdbc:mysql:///%s", System.getProperty("databasename"))); //e.g. hellogoogle1
 		config.setUsername(System.getProperty("googleusername")); // e.g. "root", "postgres"
 		config.setPassword(System.getProperty("googlepassword")); // e.g. "my-password"
